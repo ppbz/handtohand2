@@ -1,12 +1,15 @@
 package com.sjtu.handtohandnew.Adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.sjtu.handtohandnew.Activity.OrderDetailActivity;
 import com.sjtu.handtohandnew.Bean.OrderBean;
 import com.sjtu.handtohandnew.R;
 
@@ -50,6 +53,14 @@ public class OrderAdapter extends BaseAdapter {
         }else {
             viewHolder = (OrderAdapter.ViewHolder) convertView.getTag();
         }
+        viewHolder.orderPicture.setBackgroundResource(mOrder.get(position).getOrderIcon());
+        viewHolder.orderName.setText(mOrder.get(position).getOrderName());
+        convertView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mContext.startActivity(new Intent(mContext, OrderDetailActivity.class));
+            }
+        });
 
         return convertView;
     }

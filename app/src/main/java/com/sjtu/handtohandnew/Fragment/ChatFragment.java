@@ -82,4 +82,5 @@ public class ChatFragment extends EaseConversationListFragment {
     public void onDestroy() {
         super.onDestroy();
     }
+
 }

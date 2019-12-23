@@ -4,7 +4,9 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.os.Bundle;
 import android.support.v4.content.LocalBroadcastManager;
+import android.util.Log;
 import android.view.ContextMenu;
 import android.view.MenuItem;
 import android.view.View;
@@ -24,7 +26,6 @@ import com.sjtu.handtohandnew.Base.Model;
 import com.sjtu.handtohandnew.Bean.UserInfoBean;
 import com.sjtu.handtohandnew.R;
 import com.sjtu.handtohandnew.utils.Constant;
-import com.tencent.connect.UserInfo;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -55,6 +56,7 @@ public class ContactListFragment extends EaseContactListFragment {
                 if (user == null) {
                     return;
                 }
+                Log.d( user.getUsername(),"______________________kaskdj--------------------");
 
                 Intent intent = new Intent( getActivity(), ChatActivity.class );
 
@@ -64,7 +66,13 @@ public class ContactListFragment extends EaseContactListFragment {
             }
         } );
 
+        /*Bundle bundle = getArguments();
+        String friendName = bundle.getString("friendName");
+        if ()*/
+
     }
+
+
     @Override
     protected void setUpView() {
         super.setUpView();
@@ -95,7 +103,7 @@ public class ContactListFragment extends EaseContactListFragment {
                         List<UserInfoBean> contacts = new ArrayList<>();
                         //转换
                         for (String hxid : hxids) {
-                            UserInfoBean userInfo = new UserInfoBean( hxid );
+                            UserInfoBean userInfo = new UserInfoBean(hxid);
                             contacts.add( userInfo );
                         }
 

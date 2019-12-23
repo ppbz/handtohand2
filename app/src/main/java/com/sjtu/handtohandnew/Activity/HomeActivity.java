@@ -9,6 +9,9 @@ import com.lidroid.xutils.view.annotation.ViewInject;
 import com.lidroid.xutils.view.annotation.event.OnClick;
 import com.sjtu.handtohandnew.Base.BaseActivity;
 import com.sjtu.handtohandnew.Base.BaseInterface;
+import com.sjtu.handtohandnew.Fragment.Chat01Fragment;
+import com.sjtu.handtohandnew.Fragment.ChatFragment;
+import com.sjtu.handtohandnew.Fragment.ContactListFragment;
 import com.sjtu.handtohandnew.Fragment.MineFragment;
 import com.sjtu.handtohandnew.Fragment.OrderFragment;
 import com.sjtu.handtohandnew.Fragment.SelectFragment;
@@ -17,12 +20,14 @@ import com.sjtu.handtohandnew.R;
 
 public class HomeActivity extends BaseActivity implements BaseInterface {
     private SelectFragment selectFragment;
-    private LinearLayout llHomepage,llOrder,llSend,llMine;
+    private LinearLayout llHomepage,llOrder,llSend,llMine,llChat;
     private OrderFragment orderFragment,orderFragment02;
     private SendFragment sendFragment,sendFragment02;
     private MineFragment mineFragment;
     private SelectFragment selectFragment02;
     private Button mBtnFind,mBtnSend;
+    private ChatFragment chatFragment;
+    private ContactListFragment chat01Fragment;
 
     public static HomeActivity homeAct;
 
@@ -60,6 +65,7 @@ public class HomeActivity extends BaseActivity implements BaseInterface {
         sendFragment = new SendFragment();
         selectFragment02 = new SelectFragment();
         mineFragment = new MineFragment();
+        chat01Fragment = new ContactListFragment();
         /*orderFragment02 = new OrderFragment();
         sendFragment02 = new SendFragment();*/
 
@@ -69,6 +75,7 @@ public class HomeActivity extends BaseActivity implements BaseInterface {
         llOrder = (LinearLayout)findViewById(R.id.act_home_orderLinearLayout);
         llSend = (LinearLayout)findViewById(R.id.act_home_sendLinearLayout);
         llMine = (LinearLayout)findViewById(R.id.act_home_mineLinearLayout);
+        llChat = findViewById(R.id.act_home_chatLinearLayout);
         /*mBtnFind = findViewById(R.id.btn_sfind);
         mBtnSend = findViewById(R.id.btn_ssend);*/
 
@@ -76,6 +83,7 @@ public class HomeActivity extends BaseActivity implements BaseInterface {
         llMine.setOnClickListener(new OnClick());
         llSend.setOnClickListener(new OnClick());
         llOrder.setOnClickListener(new OnClick());
+        llChat.setOnClickListener(new OnClick());
         /*mBtnFind.setOnClickListener(new OnClick());
         mBtnSend.setOnClickListener(new OnClick());*/
         InitView();
@@ -100,6 +108,12 @@ public class HomeActivity extends BaseActivity implements BaseInterface {
 
     @Override
     public void InitViewOper() {
+
+        int id = getIntent().getIntExtra("id", 0);
+        if (id == 1){
+            ContactListFragment contactListFragment = new ContactListFragment();
+            getSupportFragmentManager().beginTransaction().replace(R.id.act_home_viewpager,contactListFragment).addToBackStack(null).commitAllowingStateLoss();
+        }
 
     }
 
@@ -163,6 +177,9 @@ public class HomeActivity extends BaseActivity implements BaseInterface {
                     } else {*/
                     getSupportFragmentManager().beginTransaction().replace(R.id.act_home_viewpager, selectFragment02).addToBackStack(null).commitAllowingStateLoss();
                     //}
+                    break;
+                case R.id.act_home_chatLinearLayout:
+                    getSupportFragmentManager().beginTransaction().replace(R.id.act_home_viewpager,chat01Fragment).addToBackStack(null).commitAllowingStateLoss();
                     break;
                 /*case R.id.btn_sfind:
                     getSupportFragmentManager().beginTransaction().replace(R.id.act_home_viewpager,orderFragment02).addToBackStack(null).commitAllowingStateLoss();

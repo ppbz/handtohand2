@@ -22,6 +22,7 @@ import com.sjtu.handtohandnew.R;
 
 public class MineFragment extends BaseFragment implements BaseInterface {
     private TextView textViewName;
+    private ContactListFragment contactListFragment;
 
     @ViewInject(R.id.mineFragment)
     private LinearLayout linearLayout01;
@@ -35,6 +36,13 @@ public class MineFragment extends BaseFragment implements BaseInterface {
     private void historyMine(View view){
         startAct(HistoryActivity.class);
     }
+
+    /*@OnClick(R.id.fragment_mine_friend)
+    private void myFriend(View view){
+        contactListFragment = new ContactListFragment();
+        getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.act_home_viewpager,contactListFragment);
+    }*/
+
 
     @OnClick(R.id.fragment_mine_login)
     private void logout(View view){

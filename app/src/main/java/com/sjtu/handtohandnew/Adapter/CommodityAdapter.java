@@ -1,12 +1,15 @@
 package com.sjtu.handtohandnew.Adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.sjtu.handtohandnew.Activity.OrderDetailActivity;
 import com.sjtu.handtohandnew.Bean.CommodityBean;
 import com.sjtu.handtohandnew.R;
 
@@ -52,6 +55,17 @@ public class CommodityAdapter extends BaseAdapter {
         }else {
             viewHolder = (CommodityAdapter.ViewHolder) convertView.getTag();
         }
+        viewHolder.commodityPicture.setBackgroundResource(mCommodity.get(position).getCommodityIcon());
+        viewHolder.commodityName.setText(mCommodity.get(position).getCommodityName());
+        viewHolder.commodityNumber.setText(mCommodity.get(position).getCommodityNumber());
+        viewHolder.commodityMoney.setText(mCommodity.get(position).getCommodityMoney());
+        /*convertView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mContext.startActivity(new Intent(mContext, OrderDetailActivity.class));
+            }
+        });*/
+
         return convertView;
     }
 

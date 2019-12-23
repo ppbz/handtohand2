@@ -15,7 +15,8 @@
 
     <!-- 定义一个竖直方向的LinearLayout,把QQ呢称与说说的文本框设置出来 -->
     <LinearLayout
-            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:gravity="center"
             android:layout_width="match_parent"
             android:layout_height="63dp">
 
@@ -23,27 +24,33 @@
                 android:id="@+id/foodNameItem03"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:paddingLeft="40dp"
+                android:paddingLeft="20dp"
                 android:textColor="#1D1D1C"
+                android:layout_weight="1"
                 android:text="Hello"
                 android:textSize="20sp"/>
         <TextView
-                android:id="@+id/numberItem03"
-                android:textSize="20sp"
+            android:layout_marginHorizontal="80dp"
+            android:id="@+id/numberItem03"
+                android:textSize="15sp"
                 android:text="×1"
-                android:layout_marginLeft="80dp"
+                android:layout_weight="1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
 
         </TextView>
 
         <TextView
-                android:id="@+id/moneySingleItem03"
-                android:textSize="20sp"
+            android:gravity="center"
+            android:id="@+id/moneySingleItem03"
+
+            android:textSize="15sp"
+                android:layout_weight="1"
                 android:text="3元"
-                android:layout_marginLeft="80dp"
+
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
+
+            android:layout_height="wrap_content">
         </TextView>
 
 
